@@ -1,3 +1,4 @@
+import React from 'react';
 import successIcon from "../images/SuccesIcon.svg"
 import failIcon from "../images/FailIcon.svg";
 
