@@ -1,0 +1,15 @@
+.element {
+  background: #FFFFFF;
+  border-radius: 10px;
+  position: relative;
+}
+
+.element:last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 560px) {
+  .element {
+    margin-bottom: 20px;
+  }
+}

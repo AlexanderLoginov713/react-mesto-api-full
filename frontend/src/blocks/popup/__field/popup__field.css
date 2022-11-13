@@ -1,0 +1,18 @@
+.popup__field {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+  display: block;
+  position: relative;
+  border: none;
+}
+
+.popup__field:last-of-type {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 580px) {
+  .popup__field:last-of-type {
+    margin-bottom: 42px;
+  }
+}

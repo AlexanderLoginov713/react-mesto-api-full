@@ -1,0 +1,14 @@
+.footer {
+  font-family: 'Inter', 'Arial', sans-serif;
+  max-width: 880px;
+  margin: 0 auto;
+  display: block;
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}
+

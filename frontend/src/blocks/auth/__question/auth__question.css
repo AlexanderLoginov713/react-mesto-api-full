@@ -1,0 +1,11 @@
+.auth__question {
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  display: inline-block;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+}

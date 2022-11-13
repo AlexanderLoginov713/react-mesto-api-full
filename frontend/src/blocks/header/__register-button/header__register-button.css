@@ -1,0 +1,18 @@
+.header__register-button {
+  margin: 0;
+  padding: 0; 
+  color: #FFFFFF;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  transition: opacity 0.5s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header__register-button:hover {
+  opacity: 0.5;
+}
