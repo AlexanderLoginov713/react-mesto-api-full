@@ -1,3 +1,4 @@
+import React from "react";
 function ImagePopup({ card, onClose }) {
   return (
     <div className={card.link ? "popup popup_view-image popup_opened" : "popup popup_view-image"}>
