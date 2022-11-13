@@ -1,6 +1,8 @@
 const allowedCors = [
   'https://alexanderloginov713.nomoredomains.icu',
   'http://alexanderloginov713.nomoredomains.icu',
+  'https://api.alexanderloginov713.nomoredomains.icu',
+  'http://api.alexanderloginov713.nomoredomains.icu',
   'http://localhost:3000',
 ];
 
