@@ -6,6 +6,7 @@ const bodyparser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const cors = require('./middlewares/cors');
 const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -26,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
-
+app.use(cors);
 app.use(requestLogger);
 
 app.use(cookieParser());
