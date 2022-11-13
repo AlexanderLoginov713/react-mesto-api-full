@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import Card from '../components/Сard';
 import defaultAvatar from '../images/photo-avatar.png';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
