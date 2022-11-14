@@ -80,9 +80,8 @@ class Api {
 
 const api = new Api(
   {
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
+    baseUrl: 'https://apigha.students.nomoredomains.icu',
     headers: {
-      authorization: '1f275a1d-19c7-4b76-885b-576fd4bcfded',
       'Content-Type': 'application/json'
     }
   }

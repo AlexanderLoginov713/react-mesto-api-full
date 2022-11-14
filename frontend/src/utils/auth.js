@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.apigha.students.nomoredomains.icu';
+export const BASE_URL = 'https://apigha.students.nomoredomains.icu';
 
 export const handleResponse = (res) => {
   if (res.ok) {
