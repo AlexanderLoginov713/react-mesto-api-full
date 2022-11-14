@@ -13,16 +13,16 @@ function Header({ logo, userData, loggedIn, signOut }) {
       <div className="header__section">
         {loggedIn && <h2 className="header__email">{userData.email}</h2>}
         {loggedIn && <button onClick={signOut} className="header__register-button">Выйти</button>}
-        {location.pathname === '/sign-up' &&
+        {location.pathname === '/signup' &&
           <Link
-            to="sign-in"
+            to="signin"
             className="header__register-button">
             Войти
           </Link>
           }
-        {location.pathname === '/sign-in' &&
+        {location.pathname === '/signin' &&
           <Link
-            to="sign-up"
+            to="signup"
             className="header__register-button">
             Зарегистрироваться
           </Link>

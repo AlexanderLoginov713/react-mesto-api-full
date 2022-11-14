@@ -142,7 +142,7 @@ function App() {
       .then((res) => {
         if (res.data) {
           setErrorMessage('');
-          history.push('/sign-in');
+          history.push('/signin');
         } else {
           setErrorMessage(res.error);
           setIsInfoTooltipOpen(true);
@@ -200,7 +200,7 @@ function App() {
             authorize(jwt);
           } else {
             localStorage.removeItem('jwt');
-            history.push('/sign-in');
+            history.push('/signin');
           }
         })
         .catch(err => console.log(`Ошибка: ${err}`));
@@ -236,7 +236,7 @@ function App() {
   const signOut = () => {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    history.push('/sign-in');
+    history.push('/signin');
   }
 
   return (
@@ -264,14 +264,14 @@ function App() {
               onCardDelete={handleCardDelete}
               loggedIn={loggedIn}
             />
-            <Route path="/sign-in">
+            <Route path="/signin">
               <Login onLogin={onLogin} />
             </Route>
-            <Route path="/sign-up">
+            <Route path="/signup">
               <Register onRegister={onRegister} />
             </Route>
             <Route path="/">
-              {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+              {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
             </Route>
           </Switch>
           {loggedIn && <Footer />}
