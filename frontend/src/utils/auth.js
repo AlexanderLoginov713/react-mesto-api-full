@@ -9,6 +9,7 @@ export const handleResponse = (res) => {
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
+    credentials: 'include',
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -21,6 +22,7 @@ export const register = (password, email) => {
 
 export const login = (password, email) => {
   return fetch(`${BASE_URL}/signin`, {
+    credentials: 'include',
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -33,6 +35,7 @@ export const login = (password, email) => {
 
 export const checkToken = (jwt) => {
   return fetch(`${BASE_URL}/users/me`, {
+    credentials: 'include',
     method: "GET",
     headers: {
       "Content-Type": "application/json",
