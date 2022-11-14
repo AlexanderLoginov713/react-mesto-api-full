@@ -1,10 +1,10 @@
 const allowedCors = [
-  'http://alexanderloginov713.nomoredomains.icu',
-  // 'https://alexanderloginov713.nomoredomains.icu',
-  'http://api.alexanderloginov713.nomoredomains.icu',
-  // 'https://api.alexanderloginov713.nomoredomains.icu',
+  'http://gha.students.nomoredomains.icu',
+  'https://gha.students.nomoredomains.icu',
+  'http://apigha.students.nomoredomains.icu',
+  'https://apigha.students.nomoredomains.icu',
   'http://localhost:3000',
-  // 'https://localhost:3000',
+  'https://localhost:3000',
 ];
 
 const cors = (req, res, next) => {
