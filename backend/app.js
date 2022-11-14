@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cors = require('./middlewares/cors');
 const router = require('./routes');
+const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -29,10 +30,14 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cors);
 app.use(requestLogger);
-
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.use(cookieParser());
 app.use('/', router);
-
+app.use(auth);
 app.use(errorLogger);
 
 app.use(errors());
