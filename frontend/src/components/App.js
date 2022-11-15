@@ -51,6 +51,16 @@ function App() {
   }
   useEffect(() => {
     if (loggedIn) {
+      api.getUserInfo()
+        .then((data) => {
+          setCurrentUser(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    if (loggedIn) {
       api.getInitialCards()
         .then((data) => {
           setCards(data)
@@ -64,16 +74,6 @@ function App() {
       history.push('/');
     }
   }, [history, loggedIn])
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getUserInfo()
-        .then((data) => {
-          setCurrentUser(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
   useEffect(() => {
