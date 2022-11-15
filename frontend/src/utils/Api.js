@@ -24,7 +24,7 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       credentials: 'include',
       method: 'GET',
       headers: this._headers
@@ -33,7 +33,7 @@ class Api {
   }
 
   editProfile(data) {
-    return fetch(`${this._baseUrl}users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
