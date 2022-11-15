@@ -72,6 +72,12 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
+      history.push('/');
+    }
+  }, [loggedIn])
+
+  useEffect(() => {
+    if (loggedIn) {
       api.getUserInfo()
         .then((data) => {
           setCurrentUser(data)
@@ -89,12 +95,6 @@ function App() {
         .catch(err => console.log(`Ошибка: ${err}`));
     }
   }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      history.push('/');
-    }
-  }, [history, loggedIn])
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
   useEffect(() => {

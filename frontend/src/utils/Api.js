@@ -90,7 +90,8 @@ class Api {
 
 const api = new Api(
   {
-    baseUrl: 'https://apigha.students.nomoredomains.icu',
+    baseUrl: 'http://localhost:3001',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     }
