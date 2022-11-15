@@ -49,6 +49,27 @@ function App() {
     setIsInfoTooltipOpen(false);
     setselectedCard({});
   }
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            setUserData({
+              id: res.data._id,
+              email: res.data.email
+            });
+          } else {
+            localStorage.removeItem('jwt');
+            history.push('/signin');
+          }
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
+
   useEffect(() => {
     if (loggedIn) {
       api.getUserInfo()
@@ -185,37 +206,6 @@ function App() {
         });
     }
   }
-
-  const authorize = async (jwt) => {
-    const content = await auth.checkToken(jwt)
-      .then((res) => {
-        if (res) {
-          setLoggedIn(true);
-          setUserData({
-            id: res.data._id,
-            email: res.data.email
-          });
-        }
-      })
-      .catch(err => console.log(`Ошибка: ${err}`));
-    return content;
-  }
-
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            authorize(jwt);
-          } else {
-            localStorage.removeItem('jwt');
-            history.push('/signin');
-          }
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [history]);
 
   const signOut = () => {
     localStorage.removeItem('jwt');
