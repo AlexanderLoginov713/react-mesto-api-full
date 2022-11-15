@@ -7,7 +7,7 @@ export const handleResponse = (res) => {
   return Promise.reject(`Ошибка: ${res.status}`)
 }
 
-export const register = ({ password, email }) => {
+export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     credentials: 'include',
     method: 'POST',
@@ -20,7 +20,7 @@ export const register = ({ password, email }) => {
     .then(handleResponse);
 };
 
-export const login = ({ password, email }) => {
+export const login = (password, email) => {
   return fetch(`${BASE_URL}/signin`, {
     credentials: 'include',
     method: 'POST',
@@ -42,5 +42,5 @@ export const checkToken = (jwt) => {
       "Authorization": `Bearer ${jwt}`
     },
   })
-    .then(handleResponse);
+  .then(handleResponse);
 }
