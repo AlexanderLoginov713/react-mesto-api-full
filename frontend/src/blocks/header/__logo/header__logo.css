@@ -6,6 +6,7 @@
   background-image: url(../../../images/header-logo-mesto.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  transition: opacity 1s ease;
 }
 
 @media screen and (max-width: 900px) {
