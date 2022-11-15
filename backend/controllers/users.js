@@ -19,7 +19,13 @@ module.exports.getUser = (req, res, next) => {
   User.findById(req.user._id)
     .orFail(() => { throw new NotFoundError('Пользователь не найден'); })
     .then((user) => res.send({ data: user }))
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'CastError') {
+        next(new BadRequestError('Невалидный id пользователя'));
+      } else {
+        next(err);
+      }
+    });
 };
 
 module.exports.getUserById = (req, res, next) => {
