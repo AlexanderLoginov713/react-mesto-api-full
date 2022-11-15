@@ -49,22 +49,31 @@ function App() {
     setIsInfoTooltipOpen(false);
     setselectedCard({});
   }
+  useEffect(() => {
+    if (loggedIn) {
+      api.getInitialCards()
+        .then((data) => {
+          setCards(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
-    api.getInitialCards()
-      .then((initialCards) => {
-        setCards(initialCards);
-      })
-      .catch(err => console.log(`Ошибка: ${err}`));
-  }, []);
+    if (loggedIn) {
+      history.push('/');
+    }
+  }, [history, loggedIn])
 
   useEffect(() => {
-    api.getUserInfo()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch(err => console.log(`Ошибка: ${err}`));
-  }, [])
+    if (loggedIn) {
+      api.getUserInfo()
+        .then((data) => {
+          setCurrentUser(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
   useEffect(() => {
@@ -207,32 +216,6 @@ function App() {
         .catch(err => console.log(`Ошибка: ${err}`));
     }
   }, [history]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getUserInfo()
-        .then((data) => {
-          setCurrentUser(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getInitialCards()
-        .then((data) => {
-          setCards(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      history.push('/');
-    }
-  }, [history, loggedIn])
 
   const signOut = () => {
     localStorage.removeItem('jwt');
