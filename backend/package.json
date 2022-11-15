@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "name": "express-mesto-gha",
   "version": "1.0.0",
   "description": "Проект Mesto фронтенд + бэкенд",
@@ -19,7 +20,6 @@
   "bugs": {
     "url": "https://github.com/AlexanderLoginov713/express-mesto-gha/issues"
   },
-  "homepage": "https://github.com/AlexanderLoginov713/express-mesto-gha#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
