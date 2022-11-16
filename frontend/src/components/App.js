@@ -79,7 +79,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getUserInfo()
-        .then((data) => {
+        .then(({ data }) => {
           setCurrentUser(data)
           console.log(data);
         })
@@ -147,7 +147,7 @@ function App() {
     setIsLoading(true);
     api.editAvatar(data)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUsre(res);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
