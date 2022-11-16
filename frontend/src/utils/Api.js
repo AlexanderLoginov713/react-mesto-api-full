@@ -56,6 +56,7 @@ class Api {
   }
 
   editAvatar(data) {
+    console.log(data);
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       credentials: 'include',
       method: 'PATCH',
