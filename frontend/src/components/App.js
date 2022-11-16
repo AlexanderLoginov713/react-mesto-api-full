@@ -80,7 +80,7 @@ function App() {
     if (loggedIn) {
       api.getUserInfo()
         .then(({ data }) => {
-          setCurrentUser(data)
+          setCurrentUser(data)          
         })
         .catch(err => console.log(`Ошибка: ${err}`));
     }
@@ -89,8 +89,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getInitialCards()
-        .then(({ data }) => {
-          console.log(data);
+        .then((data) => {
           setCards(data)
         })
         .catch(err => console.log(`Ошибка: ${err}`));
