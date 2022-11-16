@@ -131,10 +131,11 @@ function App() {
 
   function handleUpdateUser(data) {
     setIsLoading(true);
-    console.log(data);
     api.editProfile(data)
       .then((res) => {
         setCurrentUser(res);
+        
+    console.log(res);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
