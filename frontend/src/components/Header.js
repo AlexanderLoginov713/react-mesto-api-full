@@ -15,14 +15,14 @@ function Header({ logo, userData, loggedIn, signOut }) {
         {loggedIn && <button onClick={signOut} className="header__register-button">Выйти</button>}
         {location.pathname === '/sign-up' &&
           <Link
-            to="signin"
+            to="sign-in"
             className="header__register-button">
             Войти
           </Link>
           }
         {location.pathname === '/sign-in' &&
           <Link
-            to="signup"
+            to="sign-up"
             className="header__register-button">
             Зарегистрироваться
           </Link>
