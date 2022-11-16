@@ -72,7 +72,7 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
-  return User.findByIdAndUpdate(
+  return User.findOneAndUpdate(
     req.user._id,
     { name, about },
     { new: true, runValidators: true },
@@ -88,7 +88,7 @@ module.exports.updateUser = (req, res, next) => {
 
 module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
-  return User.findByIdAndUpdate(
+  return User.findOneAndUpdate(
     req.user._id,
     { avatar },
     { new: true, runValidators: true },
