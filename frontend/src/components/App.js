@@ -57,7 +57,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            console.log(res.data._id);
+            console.log(res._id);
             setUserData({
               id: res.data._id,
               email: res.data.email
