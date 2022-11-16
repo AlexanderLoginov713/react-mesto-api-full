@@ -37,10 +37,7 @@ class Api {
       credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({
-        name: data.name,
-        about: data.about
-      })
+      body: JSON.stringify(data)
     })
       .then((res) => this._handleResponse(res));
   }
@@ -63,9 +60,7 @@ class Api {
       credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({
-        avatar: data.avatar
-      })
+      body: JSON.stringify(data)
     })
       .then((res) => this._handleResponse(res));
   }

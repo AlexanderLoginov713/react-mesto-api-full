@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Card from '../components/Сard';
-//import defaultAvatar from '../images/photo-avatar.png';
+import defaultAvatar from '../images/photo-avatar.png';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete }) {
@@ -10,7 +10,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
     <main className="container">
       <section className="profile">
         <img
-          src={currentUser.avatar}
+          src={currentUser.avatar || defaultAvatar}
           alt="Аватар" className="profile__avatar" />
         <div className="profile__avatar-edit-button"
           onClick={onEditAvatar}>
