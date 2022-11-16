@@ -133,6 +133,7 @@ function App() {
     setIsLoading(true);
     api.editProfile(data)
       .then((res) => {
+        console.log(res);
         setCurrentUser(res);
         closeAllPopups();
       })
