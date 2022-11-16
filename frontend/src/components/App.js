@@ -146,7 +146,7 @@ function App() {
     setIsLoading(true);
     api.editAvatar(data)
       .then((res) => {
-        setCurrentUsre(res);
+        setCurrentUser(res);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
