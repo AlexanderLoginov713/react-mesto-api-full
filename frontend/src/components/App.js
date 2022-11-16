@@ -129,7 +129,7 @@ function App() {
       .catch(err => console.log(`Ошибка: ${err}`));
   }
 
-  function handleUpdateUser({ data }) {
+  function handleUpdateUser(data) {
     setIsLoading(true);
     console.log(data);
     api.editProfile(data)
