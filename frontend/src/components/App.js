@@ -80,7 +80,7 @@ function App() {
     if (loggedIn) {
       api.getUserInfo()
         .then(({ data }) => {
-          setCurrentUser(data)          
+          setCurrentUser(data)
         })
         .catch(err => console.log(`Ошибка: ${err}`));
     }
@@ -132,7 +132,7 @@ function App() {
   function handleUpdateUser(data) {
     setIsLoading(true);
     api.editProfile(data)
-      .then((res) => {
+      .then(({ res }) => {
         setCurrentUser(res);
         closeAllPopups();
       })
