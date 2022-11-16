@@ -57,7 +57,6 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            console.log(res._id);
             setUserData({
               id: res.data._id,
               email: res.data.email
@@ -82,6 +81,7 @@ function App() {
       api.getUserInfo()
         .then((data) => {
           setCurrentUser(data)
+          console.log(data);
         })
         .catch(err => console.log(`Ошибка: ${err}`));
     }
