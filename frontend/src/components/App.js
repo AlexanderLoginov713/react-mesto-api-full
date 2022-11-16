@@ -81,7 +81,6 @@ function App() {
       api.getUserInfo()
         .then(({ data }) => {
           setCurrentUser(data)
-          console.log(data);
         })
         .catch(err => console.log(`Ошибка: ${err}`));
     }
@@ -90,7 +89,8 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getInitialCards()
-        .then((data) => {
+        .then(({ data }) => {
+          console.log(data);
           setCards(data)
         })
         .catch(err => console.log(`Ошибка: ${err}`));
