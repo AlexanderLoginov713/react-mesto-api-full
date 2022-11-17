@@ -56,8 +56,8 @@ function App() {
         if (res) {
           setLoggedIn(true);
           setUserData({
-            id: res._id,
-            email: res.email
+            id: res.data._id,
+            email: res.data.email
           });
         }
       })
@@ -85,8 +85,7 @@ function App() {
     if (loggedIn) {
       history.push('/');
     }
-  }, [loggedIn])
-
+  }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
