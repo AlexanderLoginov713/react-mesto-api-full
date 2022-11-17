@@ -155,7 +155,7 @@ function App() {
 
   function handleUpdateAvatar(avatarLink) {
     api.editAvatar(avatarLink)
-      .then((data) => {
+      .then(({ data }) => {
         setCurrentUser(data);
         closeAllPopups();
       })
