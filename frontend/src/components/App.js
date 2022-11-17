@@ -62,8 +62,9 @@ function App() {
     api.getUserInfo()
       .then((res) => {
         setCurrentUser(res);
+        console.dir(res);
       })
-      .catch(console.dir);
+      .catch(err => console.log(`Ошибка: ${err}`));
   }, [])
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
@@ -87,7 +88,7 @@ function App() {
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
       })
-      .catch(console.dir);
+      .catch(err => console.log(`Ошибка: ${err}`));
   }
 
   function handleCardDelete(card) {
@@ -103,9 +104,10 @@ function App() {
     api.editProfile(data)
       .then((res) => {
         setCurrentUser(res);
+        console.dir(res);
         closeAllPopups();
       })
-      .catch(console.dir(res))
+      .catch(err => console.log(`Ошибка: ${err}`))
       .finally(() => {
         setIsLoading(false);
       });
