@@ -60,7 +60,9 @@ class Api {
       credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        avatar: data.link
+      })
     })
       .then((res) => this._handleResponse(res));
   }

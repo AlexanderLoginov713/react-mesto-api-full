@@ -153,8 +153,9 @@ function App() {
       });
   }
 
-  function handleUpdateAvatar(avatarLink) {
-    api.editAvatar(avatarLink)
+  function handleUpdateAvatar(data) {
+    setIsLoading(true);
+    api.editAvatar(data)
       .then(({ data }) => {
         setCurrentUser(data);
         closeAllPopups();
