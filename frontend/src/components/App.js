@@ -51,13 +51,25 @@ function App() {
   }
 
   useEffect(() => {
-    api.getInitialCards()
-      .then((initialCards) => {
-        console.dir(initialCards);
-        setCards(initialCards);
-      })
-      .catch(err => console.log(`Ошибка: ${err}`));
-  }, []);
+    if (loggedIn) {
+      api.getUserInfo()
+        .then(({ data }) => {
+          console.dir(data);
+          setCurrentUser(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      api.getInitialCards()
+        .then((data) => {          
+          setCards(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
   useEffect(() => {
@@ -95,9 +107,9 @@ function App() {
     console.dir(data);
     setIsLoading(true);
     api.editProfile(data)
-      .then((res) => {
-        setCurrentUser(res);
-        console.dir(res);
+      .then((data) => {
+        setCurrentUser(data);
+        console.dir(data);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
@@ -201,27 +213,6 @@ function App() {
         .catch(err => console.log(`Ошибка: ${err}`));
     }
   }, [history]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getUserInfo()
-        .then(({ data }) => {
-          console.dir(data);
-          setCurrentUser(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getInitialCards()
-        .then((data) => {
-          setCards(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
