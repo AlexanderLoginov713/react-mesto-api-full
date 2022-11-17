@@ -51,50 +51,20 @@ function App() {
   }
 
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            setLoggedIn(true);
-            setUserData({
-              id: res.data._id,
-              email: res.data.email
-            });
-          } else {
-            localStorage.removeItem('jwt');
-            history.push('/sign-in');
-          }
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
+    api.getInitialCards()
+      .then((initialCards) => {
+        setCards(initialCards);
+      })
+      .catch(err => console.log(`Ошибка: ${err}`));
+  }, []);
 
   useEffect(() => {
-    if (loggedIn) {
-      history.push('/');
-    }
-  }, [loggedIn])
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getUserInfo()
-        .then((data) => {
-          setCurrentUser(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getInitialCards()
-        .then((data) => {
-          setCards(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
+    api.getUserInfo()
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch(err => console.log(`Ошибка: ${err}`));
+  }, [])
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
   useEffect(() => {
@@ -115,10 +85,9 @@ function App() {
     const isLiked = card.likes.some(i => i._id === currentUser._id)
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
-        setCards((state) =>
-          state.map((c) => c._id === card._id ? newCard : c))
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
       })
-      .catch(console.dir);
+      .catch(err => console.log(`Ошибка: ${err}`));
   }
 
   function handleCardDelete(card) {
@@ -130,7 +99,6 @@ function App() {
   }
 
   function handleUpdateUser(data) {
-    console.log(data);
     setIsLoading(true);
     api.editProfile(data)
       .then((res) => {
@@ -208,6 +176,63 @@ function App() {
     }
   }
 
+  const authorize = async (jwt) => {
+    const content = await auth.checkToken(jwt)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          setUserData({
+            id: res.data._id,
+            email: res.data.email
+          });
+        }
+      })
+      .catch(err => console.log(`Ошибка: ${err}`));
+    return content;
+  }
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            authorize(jwt);
+          } else {
+            localStorage.removeItem('jwt');
+            history.push('/sign-in');
+          }
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [history]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      api.getUserInfo()
+        .then((data) => {
+          setCurrentUser(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      api.getInitialCards()
+        .then((data) => {
+          setCards(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      history.push('/');
+    }
+  }, [history, loggedIn])
+
   const signOut = () => {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
@@ -283,3 +308,4 @@ function App() {
   );
 }
 export default App;
+
