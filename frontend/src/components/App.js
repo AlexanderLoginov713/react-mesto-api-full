@@ -159,6 +159,7 @@ function App() {
     setIsLoading(true);
     api.editAvatar(data)
       .then((res) => {
+        console.dir(res);
         setCurrentUser(res);
         closeAllPopups();
       })
