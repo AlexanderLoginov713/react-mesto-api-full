@@ -49,14 +49,18 @@ function App() {
     setIsInfoTooltipOpen(false);
     setselectedCard({});
   }
-  
+
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth.checkToken(jwt)
         .then((res) => {
           if (res) {
-            authorize(jwt);
+            setLoggedIn(true);
+            setUserData({
+              id: res._id,
+              email: res.email
+            });
           } else {
             localStorage.removeItem('jwt');
             history.push('/sign-in');
