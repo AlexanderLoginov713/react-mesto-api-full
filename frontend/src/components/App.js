@@ -143,7 +143,6 @@ function App() {
     setIsLoading(true);
     api.editProfile(data)
       .then(({ data }) => {
-        console.dir(data);
         setCurrentUser(data);        
         closeAllPopups();
       })
@@ -156,8 +155,8 @@ function App() {
   function handleUpdateAvatar(data) {
     setIsLoading(true);
     api.editAvatar(data)
-      .then((res) => {
-        setCurrentUser(res);
+      .then(({ data }) => {
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
