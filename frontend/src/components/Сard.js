@@ -9,7 +9,7 @@ function Card({ cardData, onCardClick, onCardLike, onCardDelete }) {
   const cardDeleteButtonClassName = (
     `element__trash-btn ${isOwn ? '' : 'element__trash-btn_hidden'}`
   )
-  const isLiked = cardData.likes.some(i => i === currentUser._id);
+  const isLiked = cardData.likes.some((i) => i === currentUser._id);
   const cardLikeButtonClassName = (
     `element__like-btn ${isLiked ? 'element__like-btn_active' : ''}`);
 
