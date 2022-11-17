@@ -212,7 +212,7 @@ function App() {
     if (loggedIn) {
       api.getUserInfo()
         .then(({ data }) => {
-          console.dir(res);
+          console.dir(data);
           setCurrentUser(data)
         })
         .catch(err => console.log(`Ошибка: ${err}`));
