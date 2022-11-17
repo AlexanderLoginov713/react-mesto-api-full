@@ -91,7 +91,6 @@ function App() {
     if (loggedIn) {
       api.getUserInfo()
         .then(({ data }) => {
-          console.dir(data);
           setCurrentUser(data)
         })
         .catch(err => console.log(`Ошибка: ${err}`));
@@ -141,12 +140,11 @@ function App() {
   }
 
   function handleUpdateUser(data) {
-    console.dir(data);
     setIsLoading(true);
     api.editProfile(data)
       .then((res) => {
-        setCurrentUser(res);
         console.dir(res);
+        setCurrentUser(res);        
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
@@ -159,7 +157,6 @@ function App() {
     setIsLoading(true);
     api.editAvatar(data)
       .then((res) => {
-        console.dir(res);
         setCurrentUser(res);
         closeAllPopups();
       })
