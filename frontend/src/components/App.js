@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
     api.getUserInfo()
-      .then(({ res }) => {
+      .then((res) => {
         console.dir(res);
         setCurrentUser(res);
       })
