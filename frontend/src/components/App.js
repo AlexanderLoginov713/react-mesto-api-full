@@ -123,10 +123,9 @@ function App() {
   }, [isOpen]);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id)
-    api.changeLikeCardStatus(card._id, isLiked)
+    const isLiked = card.likes.some(i => i === currentUser._id)
+    api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        console.dir(newCard);
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
       })
       .catch(err => console.log(`Ошибка: ${err}`));
@@ -144,7 +143,7 @@ function App() {
     setIsLoading(true);
     api.editProfile(data)
       .then(({ data }) => {
-        setCurrentUser(data);        
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
