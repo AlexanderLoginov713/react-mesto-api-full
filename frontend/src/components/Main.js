@@ -32,7 +32,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
       <section className="elements">
         {cards.map((card) => {
           return (<Card
-            cardData={card}
+            card={card}
             key={card._id}
             onCardClick={onCardClick}
             onCardLike={onCardLike}
