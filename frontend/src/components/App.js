@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getInitialCards()
-        .then((data) => {          
+        .then((data) => {
           setCards(data)
         })
         .catch(err => console.log(`Ошибка: ${err}`));
@@ -107,9 +107,9 @@ function App() {
     console.dir(data);
     setIsLoading(true);
     api.editProfile(data)
-      .then((data) => {
-        setCurrentUser(data);
-        console.dir(data);
+      .then(({ res }) => {
+        setCurrentUser(res);
+        console.dir(res);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
