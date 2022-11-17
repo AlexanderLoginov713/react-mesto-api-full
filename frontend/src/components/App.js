@@ -104,11 +104,11 @@ function App() {
   }
 
   function handleUpdateUser(data) {
-    console.dir({ data });
+    console.dir(data);
     setIsLoading(true);
     api.editProfile(data)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser({ res });
         console.dir(res);
         closeAllPopups();
       })
