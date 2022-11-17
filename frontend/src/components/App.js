@@ -79,7 +79,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getUserInfo()
-        .then(({ data }) => {
+        .then((data) => {
           setCurrentUser(data)
         })
         .catch(err => console.log(`Ошибка: ${err}`));
