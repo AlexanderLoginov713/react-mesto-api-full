@@ -110,7 +110,7 @@ function App() {
     api.editProfile(data)
       .then((res) => {
         setCurrentUser(res);
-        console.dir(res);
+        console.dir(res["data"].shift());
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
