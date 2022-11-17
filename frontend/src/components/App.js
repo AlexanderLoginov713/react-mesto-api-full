@@ -53,6 +53,7 @@ function App() {
   useEffect(() => {
     api.getInitialCards()
       .then((initialCards) => {
+        console.dir(initialCards);
         setCards(initialCards);
       })
       .catch(err => console.log(`Ошибка: ${err}`));
@@ -60,7 +61,7 @@ function App() {
 
   useEffect(() => {
     api.getUserInfo()
-      .then((res) => {
+      .then(({ res }) => {
         console.dir(res);
         setCurrentUser(res);
       })
