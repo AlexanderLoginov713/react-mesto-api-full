@@ -63,7 +63,7 @@ function App() {
       .then((res) => {
         setCurrentUser(res);
       })
-      .catch(err => console.log(`Ошибка: ${err}`));
+      .catch(console.dir);
   }, [])
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
@@ -206,26 +206,6 @@ function App() {
         .catch(err => console.log(`Ошибка: ${err}`));
     }
   }, [history]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getUserInfo()
-        .then((data) => {
-          setCurrentUser(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api.getInitialCards()
-        .then((data) => {
-          setCards(data)
-        })
-        .catch(err => console.log(`Ошибка: ${err}`));
-    }
-  }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
