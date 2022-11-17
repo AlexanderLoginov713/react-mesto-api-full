@@ -169,6 +169,7 @@ function App() {
     setIsLoading(true);
     api.addCard(card)
       .then((newCard) => {
+        console.dir(newCard);
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
