@@ -92,7 +92,7 @@ function App() {
   }
 
   function handleUpdateUser(data) {
-    console.dir(res);
+    console.dir(data);
     setIsLoading(true);
     api.editProfile(data)
       .then((res) => {
