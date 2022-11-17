@@ -142,7 +142,7 @@ function App() {
   function handleUpdateUser(data) {
     setIsLoading(true);
     api.editProfile(data)
-      .then((res) => {
+      .then(({ res }) => {
         console.dir(res);
         setCurrentUser(res);        
         closeAllPopups();
