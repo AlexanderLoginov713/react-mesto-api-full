@@ -105,7 +105,7 @@ function App() {
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch(console.dir)
+      .catch(console.dir(res))
       .finally(() => {
         setIsLoading(false);
       });
