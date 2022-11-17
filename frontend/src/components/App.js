@@ -52,7 +52,7 @@ function App() {
 
   useEffect(() => {
     api.getInitialCards()
-      .then(({ initialCards }) => {
+      .then((initialCards) => {
         console.dir(initialCards);
         setCards(initialCards);
       })
@@ -92,6 +92,7 @@ function App() {
   }
 
   function handleUpdateUser(data) {
+    console.dir(res);
     setIsLoading(true);
     api.editProfile(data)
       .then((res) => {
