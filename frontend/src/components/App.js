@@ -60,9 +60,8 @@ function App() {
 
   useEffect(() => {
     api.getUserInfo()
-      .then(({ res }) => {
+      .then((res) => {
         setCurrentUser(res);
-        console.dir(res);
       })
       .catch(err => console.log(`Ошибка: ${err}`));
   }, [])
@@ -208,6 +207,27 @@ function App() {
         .catch(err => console.log(`Ошибка: ${err}`));
     }
   }, [history]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      api.getUserInfo()
+        .then(({ data }) => {
+          console.dir(res);
+          setCurrentUser(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      api.getInitialCards()
+        .then((data) => {
+          setCards(data)
+        })
+        .catch(err => console.log(`Ошибка: ${err}`));
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
