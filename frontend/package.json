@@ -17,7 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && scp -r ./build/* cloud-713@51.250.31.11:/home/cloud-713/react-mesto-api-full/frontend"
   },
   "browserslist": {
     "production": [
