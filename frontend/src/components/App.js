@@ -95,8 +95,8 @@ function App() {
     setIsLoading(true);
     api.editProfile(data)
       .then((res) => {
-        setCurrentUser({ res });
-        console.dir({ res });
+        setCurrentUser(res);
+        console.dir(res);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
