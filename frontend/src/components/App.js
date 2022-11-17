@@ -56,8 +56,8 @@ function App() {
         if (res) {
           setLoggedIn(true);
           setUserData({
-            id: res.data._id,
-            email: res.data.email
+            id: res._id,
+            email: res.email
           });
         }
       })
@@ -125,9 +125,8 @@ function App() {
   }, [isOpen]);
 
   function handleCardLike(card) {
-    console.dir(currentUser);
     const isLiked = card.likes.some(i => i._id === currentUser._id)
-    api.changeLikeCardStatus(card._id, isLiked)
+    api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
       })
@@ -148,7 +147,7 @@ function App() {
     api.editProfile(data)
       .then((res) => {
         setCurrentUser(res);
-        console.dir(res["data"]);
+        console.dir(res);
         closeAllPopups();
       })
       .catch(err => console.log(`Ошибка: ${err}`))
