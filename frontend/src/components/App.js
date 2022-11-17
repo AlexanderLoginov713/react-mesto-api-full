@@ -123,7 +123,6 @@ function App() {
   }, [isOpen]);
 
   function handleCardLike(card) {
-    console.dir(card);
     const isLiked = card.likes.some((i) => i === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
@@ -170,7 +169,6 @@ function App() {
     setIsLoading(true);
     api.addCard(card)
       .then((newCard) => {
-        console.dir(newCard);
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
