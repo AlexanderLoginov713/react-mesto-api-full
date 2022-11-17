@@ -61,6 +61,7 @@ function App() {
   useEffect(() => {
     api.getUserInfo()
       .then((res) => {
+        console.dir(res);
         setCurrentUser(res);
       })
       .catch(err => console.log(`Ошибка: ${err}`));
