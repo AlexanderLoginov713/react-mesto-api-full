@@ -59,15 +59,6 @@ function App() {
       .catch(err => console.log(`Ошибка: ${err}`));
   }, []);
 
-  useEffect(() => {
-    api.getUserInfo()
-      .then((res) => {
-        console.dir(res);
-        setCurrentUser(res);
-      })
-      .catch(err => console.log(`Ошибка: ${err}`));
-  }, [])
-
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;
   useEffect(() => {
     function closeByEscape(evt) {
