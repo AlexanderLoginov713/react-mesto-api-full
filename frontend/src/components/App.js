@@ -52,7 +52,7 @@ function App() {
 
   useEffect(() => {
     api.getInitialCards()
-      .then((initialCards) => {
+      .then(({ initialCards }) => {
         console.dir(initialCards);
         setCards(initialCards);
       })
