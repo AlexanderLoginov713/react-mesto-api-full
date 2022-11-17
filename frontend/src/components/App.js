@@ -87,6 +87,7 @@ function App() {
   }, [isOpen]);
 
   function handleCardLike(card) {
+    console.dir(currentUser);
     const isLiked = card.likes.some(i => i._id === currentUser._id)
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
