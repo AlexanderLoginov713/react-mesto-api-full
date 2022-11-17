@@ -87,7 +87,7 @@ function App() {
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
       })
-      .catch(err => console.log(`Ошибка: ${err}`));
+      .catch(console.dir);
   }
 
   function handleCardDelete(card) {
@@ -105,7 +105,7 @@ function App() {
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch(err => console.log(`Ошибка: ${err}`))
+      .catch(console.dir)
       .finally(() => {
         setIsLoading(false);
       });
