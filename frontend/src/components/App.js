@@ -77,7 +77,7 @@ function App() {
             history.push('/sign-in');
           }
         })
-        .catch(err => console.log(`Ошибка: ${err}`));
+        .catch(console.dir);
     }
   }, [loggedIn]);
 

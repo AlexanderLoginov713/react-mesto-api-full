@@ -31,7 +31,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 app.use(cookieParser());
-app.use(express.static(__dirname));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
