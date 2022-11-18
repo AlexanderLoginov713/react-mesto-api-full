@@ -66,22 +66,6 @@ function App() {
   }
 
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            authorize(jwt);
-          } else {
-            localStorage.removeItem('jwt');
-            history.push('/sign-in');
-          }
-        })
-        .catch(console.dir);
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
     if (loggedIn) {
       history.push('/');
     }
@@ -216,6 +200,22 @@ function App() {
         });
     }
   }
+  
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            authorize(jwt);
+          } else {
+            localStorage.removeItem('jwt');
+            history.push('/sign-in');
+          }
+        })
+        .catch(console.dir);
+    }
+  }, [loggedIn]);
 
   const signOut = () => {
     auth.logOut();
