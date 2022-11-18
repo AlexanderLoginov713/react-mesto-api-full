@@ -218,6 +218,7 @@ function App() {
   }
 
   const signOut = () => {
+    auth.logOut();
     localStorage.removeItem('jwt');
     setLoggedIn(false);
     history.push('/sign-in');

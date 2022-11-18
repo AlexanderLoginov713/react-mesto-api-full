@@ -72,7 +72,7 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
-  return User.findOneAndUpdate(
+  return User.findByIdAndUpdate(
     req.user._id,
     { name, about },
     { new: true, runValidators: true },
@@ -88,7 +88,7 @@ module.exports.updateUser = (req, res, next) => {
 
 module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
-  return User.findOneAndUpdate(
+  return User.findByIdAndUpdate(
     req.user._id,
     { avatar },
     { new: true, runValidators: true },
@@ -118,4 +118,8 @@ module.exports.login = (req, res, next) => {
       }).send({ token });
     })
     .catch(next);
+};
+
+module.exports.logout = (req, res) => {
+  res.clearCookie('token').send({ message: 'Ваша сессия завершена' });
 };
