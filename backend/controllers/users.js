@@ -120,6 +120,7 @@ module.exports.login = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.logout = (req, res) => {
+module.exports.logout = (req, res, next) => {
   res.clearCookie('jwt').send({ message: 'Ваша сессия завершена' });
+  next();
 };
