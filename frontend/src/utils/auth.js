@@ -46,7 +46,7 @@ export const checkToken = (jwt) => {
 }
 
 export const logOut = () => {
-  return fetch(`${BASE_URL}/logout`, {
+  return fetch(`${BASE_URL}`, {
     credentials: "include",
     method: 'GET',
     headers: {

@@ -15,7 +15,7 @@ router.use(auth);
 
 router.post('/signup', checkingCreateUser, createUser);
 router.post('/signin', checkingLogin, login);
-router.post('/signout', logout);
+router.post('/', logout);
 
 router.use('/users', userRouter);
 router.use('/cards', cardsRouter);
