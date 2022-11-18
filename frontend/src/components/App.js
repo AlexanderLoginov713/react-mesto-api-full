@@ -50,20 +50,21 @@ function App() {
     setselectedCard({});
   }
 
-  const authorize = async (jwt) => {
-    const content = await auth.checkToken(jwt)
-      .then((res) => {
-        if (res) {
-          setLoggedIn(true);
-          setUserData({
-            id: res.data._id,
-            email: res.data.email
-          });
-        }
-      })
-      .catch(err => console.log(`Ошибка: ${err}`));
-    return content;
-  }
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            authorize(jwt);
+          } else {
+            localStorage.removeItem('jwt');
+            history.push('/sign-in');
+          }
+        })
+        .catch(console.dir);
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -200,22 +201,21 @@ function App() {
         });
     }
   }
-  
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            authorize(jwt);
-          } else {
-            localStorage.removeItem('jwt');
-            history.push('/sign-in');
-          }
-        })
-        .catch(console.dir);
-    }
-  }, [loggedIn]);
+
+  const authorize = async (jwt) => {
+    const content = await auth.checkToken(jwt)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          setUserData({
+            id: res.data._id,
+            email: res.data.email
+          });
+        }
+      })
+      .catch(err => console.log(`Ошибка: ${err}`));
+    return content;
+  }
 
   const signOut = () => {
     auth.logOut();
