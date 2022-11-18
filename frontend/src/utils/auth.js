@@ -33,8 +33,19 @@ export const login = (password, email) => {
     .then(handleResponse);
 };
 
+export const checkToken = (jwt) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${jwt}`
+    },
+  })
+  .then(handleResponse);
+}
+
 export const logOut = () => {
-  return fetch(`${BASE_URL}`, {
+  return fetch(`${BASE_URL}/logout`, {
     credentials: "include",
     method: 'GET',
     headers: {
