@@ -50,6 +50,21 @@ function App() {
     setselectedCard({});
   }
 
+  const authorize = async (jwt) => {
+    const content = await auth.checkToken(jwt)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          setUserData({
+            id: res.data._id,
+            email: res.data.email
+          });
+        }
+      })
+      .catch(console.dir);
+    return content;
+  }
+
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -200,21 +215,6 @@ function App() {
           setIsInfoTooltipOpen(true);
         });
     }
-  }
-
-  const authorize = async (jwt) => {
-    const content = await auth.checkToken(jwt)
-      .then((res) => {
-        if (res) {
-          setLoggedIn(true);
-          setUserData({
-            id: res.data._id,
-            email: res.data.email
-          });
-        }
-      })
-      .catch(err => console.log(`Ошибка: ${err}`));
-    return content;
   }
 
   const signOut = () => {
