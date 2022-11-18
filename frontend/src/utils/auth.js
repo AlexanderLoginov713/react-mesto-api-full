@@ -35,6 +35,7 @@ export const login = (password, email) => {
 
 export const checkToken = (jwt) => {
   return fetch(`${BASE_URL}/users/me`, {
+    credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
