@@ -45,14 +45,14 @@ export const checkToken = (jwt) => {
   .then(handleResponse);
 }
 
-export const logOut = () => {
-  return fetch(`${BASE_URL}/logout`, {
+export const logOut = async () => {
+  const res = await fetch(`${BASE_URL}/logout`, {
     credentials: "include",
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-  })
-    .then(handleResponse);
+  });
+  return handleResponse(res);
 }
