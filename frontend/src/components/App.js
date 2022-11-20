@@ -206,7 +206,7 @@ function App() {
             setLoggedIn(true);
             history.push('/');
           } else {
-            
+
             setIsInfoTooltipOpen(true);
           }
         })
@@ -218,15 +218,10 @@ function App() {
   }
 
   function signOut() {
-    return auth.logOut()
-      .then(() => {
-        localStorage.removeItem('jwt');
-        setLoggedIn(false);
-        history.push('/sign-in');
-      })
-      .catch(err => {
-        setErrorMessage(err);
-      });
+    auth.logOut()
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    history.push('/sign-in');
   }
 
   return (
