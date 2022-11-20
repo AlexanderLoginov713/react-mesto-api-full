@@ -218,10 +218,13 @@ function App() {
   }
 
   const signOut = () => {
-    auth.logOut();
-    localStorage.removeItem('jwt');
-    setLoggedIn(false);
-    history.push('/sign-in');
+    auth.logOut()
+      .then(() => {
+        setLoggedIn(false);
+        setCurrentUser({})
+        history.push("/sign-in");
+      })
+      .catch(err => console.log(err))
   }
 
   return (
