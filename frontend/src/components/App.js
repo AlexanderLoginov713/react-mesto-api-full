@@ -217,15 +217,16 @@ function App() {
     }
   }
 
-  async function signOut() {
-    try {
-      await auth.logOut();
-      localStorage.removeItem('jwt');
-      setLoggedIn(false);
-      history.push('/sign-in');
-    } catch (err) {
-      setErrorMessage(err);
-    }
+  function signOut() {
+    return auth.logOut()
+      .then(() => {
+        localStorage.removeItem('jwt');
+        setLoggedIn(false);
+        history.push('/sign-in');
+      })
+      .catch(err => {
+        setErrorMessage(err);
+      });
   }
 
   return (
