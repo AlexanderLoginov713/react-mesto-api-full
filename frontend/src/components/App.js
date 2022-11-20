@@ -217,14 +217,16 @@ function App() {
     }
   }
 
-  async function signOut() {
-    try {
-      auth.logOut()
-    } catch (error) {
-      return console.log(error);
-    }
-    setLoggedIn(false);
-    setCurrentUser({});
+  function signOut() {
+    return auth.logOut()
+      .then(() => {
+        localStorage.removeItem('jwt');
+        setLoggedIn(false);
+        history.push('/sign-in');
+      })
+      .catch(err => {
+        setIsInfoTooltipOpen(true);
+      });
   }
 
   return (
