@@ -8,7 +8,6 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cors = require('./middlewares/cors');
 const router = require('./routes');
-const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -40,7 +39,7 @@ app.get('/crash-test', () => {
 app.use(requestLogger);
 
 app.use('/', router);
-app.use(auth);
+
 app.use(errorLogger);
 
 app.use(errors());
