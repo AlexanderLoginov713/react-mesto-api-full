@@ -220,7 +220,6 @@ function App() {
   const signOut = () => {
     auth.logOut()
       .then(() => {
-        localStorage.removeItem('jwt');
         setLoggedIn(false);
         setCurrentUser({});
         history.push('/sign-in');
