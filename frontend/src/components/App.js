@@ -178,8 +178,8 @@ function App() {
       });
   }
 
-  const onRegister = ({ password, email }) => {
-    return auth.register(password, email)
+  function onRegister({ password, email }) {
+    auth.register(password, email)
       .then((res) => {
         if (res.data) {
           setErrorMessage('');
@@ -197,9 +197,9 @@ function App() {
       });
   }
 
-  const onLogin = ({ password, email }) => {
+  function onLogin({ password, email }) {
     if (password && email) {
-      return auth.login(password, email)
+      auth.login(password, email)
         .then((data) => {
           if (data.token) {
             localStorage.setItem('jwt', data.token);
@@ -217,9 +217,9 @@ function App() {
     }
   }
 
-  const signOut = () => {
+  function signOut() {
     return auth.logOut()
-      .then(() => {
+      .then((res) => {
         localStorage.removeItem('jwt');
         setLoggedIn(false);
         history.push('/sign-in');
