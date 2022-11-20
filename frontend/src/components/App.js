@@ -206,7 +206,7 @@ function App() {
             setLoggedIn(true);
             history.push('/');
           } else {
-            setErrorMessage(data.error);
+            
             setIsInfoTooltipOpen(true);
           }
         })
@@ -225,7 +225,7 @@ function App() {
         history.push('/sign-in');
       })
       .catch(err => {
-        setIsInfoTooltipOpen(true);
+        setErrorMessage(err);
       });
   }
 
